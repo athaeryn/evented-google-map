@@ -9,21 +9,39 @@ Tested with the Google Maps JavaScript API version 3.17.
 
 ## Usage
 
-Assumes you have the Google Maps JS loaded (you need this anyway to create the
-Map).
+You can trigger events on the Map object itself by mixing in `Backbone.Events`,
+or any other object with Backbone Events (including a Model).
+
+Note: the following code assumes you have the Google Maps JS loaded (you need
+this anyway to create the Map).
 
 ```js
-Backbone = require 'backbone'
-EventedGoogleMap = require 'evented-google-map'
+_                = require('underscore')
+Backbone         = require('backbone')
+EventedGoogleMap = require('evented-google-map')
 
 model = new Backbone.Model
-model.on('idle', console.log.bind(console, "The map went idle."))
+map   = new google.maps.Map( ... )
+_.extend(map, Backbone.Events)
 
-map = new google.maps.Map( ... )
+model.on('idle', console.log.bind(console, 'The model saw the map go idle.'))
+map.on('dragend', console.log.bind(console, 'The map was dragged.'))
 
 EventedGoogleMap(map)
   .triggerEvents(['idle'])
   .on(model)
 
-// logs "The map went idle."
+EventedGoogleMap(map)
+  .triggerEvents(['dragend'])
+  .on(map)
+```
+
+You can also chain those last calls togther:
+
+```js
+EventedGoogleMap(map)
+  .triggerEvents(['idle'])
+  .on(model)
+  .triggerEvents(['dragend'])
+  .on(map)
 ```
