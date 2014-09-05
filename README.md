@@ -36,7 +36,7 @@ EventedGoogleMap(map)
   .on(map)
 ```
 
-You can also chain those last calls togther:
+You can also chain those last calls together:
 
 ```js
 EventedGoogleMap(map)
