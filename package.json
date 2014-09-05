@@ -1,0 +1,23 @@
+{
+  "name": "evented-google-map",
+  "version": "0.0.1",
+  "description": "Listen to your map.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/athaeryn/evented-google-map.git"
+  },
+  "keywords": [
+    "backbone",
+    "events",
+    "google maps"
+  ],
+  "author": "Mike Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/athaeryn/evented-google-map/issues"
+  },
+  "homepage": "https://github.com/athaeryn/evented-google-map"
+}
