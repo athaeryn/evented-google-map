@@ -6,10 +6,11 @@ module.exports = function EventedGoogleMap(map) {
       return this;
     },
     on: function to(subject) {
+      var emitMethod = subject.emit || subject.trigger;
       eventsToWatch.forEach(function setUpEventForwarding(event) {
         google.maps.event.addListener(
           map, event,
-          subject.trigger.bind(subject, event)
+          emitMethod.bind(subject, event)
         )
       });
       return this;
