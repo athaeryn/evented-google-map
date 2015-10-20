@@ -28,20 +28,16 @@ model.on('idle', console.log.bind(console, 'The model saw the map go idle.'))
 map.on('dragend', console.log.bind(console, 'The map was dragged.'))
 
 EventedGoogleMap(map)
-  .triggerEvents(['idle'])
-  .on(model)
+  .triggerOn(model, ['idle'])
 
 EventedGoogleMap(map)
-  .triggerEvents(['dragend'])
-  .on(map)
+  .triggerOn(map, ['dragend'])
 ```
 
 You can also chain those last calls together:
 
 ```js
 EventedGoogleMap(map)
-  .triggerEvents(['idle'])
-  .on(model)
-  .triggerEvents(['dragend'])
-  .on(map)
+  .triggerOn(model, ['idle'])
+  .triggerOn(map, ['dragend'])
 ```
